@@ -16,7 +16,7 @@ typedef struct{
 
 args checkFlags(char *argv[]);
 
-int foundFunc(char flag, functions flags[]);
+int foundFunc(char flag, functions flags[], int size);
 
 void flag_e(char *regular, char *line);
 
