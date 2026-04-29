@@ -9,9 +9,8 @@ typedef struct{
 
 typedef struct{
     char flag;
-    void (*function)(char *regular);
+    void (*function)(char *regular, char *line);
 }functions;
-
 
 //functions
 
@@ -19,16 +18,14 @@ args checkFlags(char *argv[]);
 
 int foundFunc(char flag, functions flags[]);
 
-void none_flag(char *regular);
+void flag_e(char *regular, char *line);
 
-void flag_e(char *regular);
+void flag_i(char *regular, char *line);
 
-void flag_i(char *regular);
+void flag_v(char *regular, char *line);
 
-void flag_v(char *regular);
+void flag_c(char *regular, char *line);
 
-void flag_c(char *regular);
+void flag_l(char *regular, char *line);
 
-void flag_l(char *regular);
-
-void flag_n(char *regular);
+void flag_n(char *regular, char *line);

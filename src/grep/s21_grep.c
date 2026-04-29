@@ -6,8 +6,11 @@
 
 int main(int argc, char *argv[]){
 
+    char *line = NULL;
+    size_t size = 0;
+    ssize_t len = getline(&line, &size, stdin);
+
     functions flags[] = {
-        {NULL, none_flag},
         {'e', flag_e},
         {'i', flag_i},
         {'v', flag_v},
@@ -18,7 +21,7 @@ int main(int argc, char *argv[]){
 
     args arguments = checkFlags(argv);
 
-    flags[foundFunc(arguments.flag, flags)].function(arguments.string);
+    flags[foundFunc(arguments.flag, flags)].function(arguments.string, line);
 
     return 0;
 }
@@ -28,7 +31,7 @@ args checkFlags(char *argv[]){
     args result = {NULL, NULL};
 
     if (strlen(argv[1]) == 2) {
-        result.flag = argv[1][2];
+        result.flag = argv[1][1];
         result.string = argv[2];
     } else {
         result.string = argv[1];
@@ -39,9 +42,9 @@ args checkFlags(char *argv[]){
 
 int foundFunc(char flag, functions flags[]){ 
 
-    int res;
+    int res = NULL;
 
-    for(int i; i < 7; i++){
+    for(int i = 0; i < sizeof(flags) / sizeof(flags[0]); i++){
         if (flag == flags[i].flag) res = i;
     }
 
