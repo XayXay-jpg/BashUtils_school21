@@ -18,13 +18,29 @@ if (regular == NULL || line == NULL) return;
 
     reti = regexec(&regex, line, 0, NULL, 0);
     if (!reti) {
-        printf("%s\n", line);
+        printf("%s", line);
     }
 
     regfree(&regex);
 }
 
-void flag_i(char*, char*) {}
+void flag_i(char *regular, char *line){
+if (regular == NULL || line == NULL) return;
+
+    regex_t regex;
+    int reti = regcomp(&regex, regular, REG_ICASE);
+    if (reti) {
+        return;
+    }
+
+    reti = regexec(&regex, line, 0, NULL, 0);
+    if (!reti) {
+        printf("%s", line);
+    }
+
+    regfree(&regex);
+}
+
 void flag_v(char*, char*) {}
 void flag_c(char*, char*) {}
 void flag_l(char*, char*) {}

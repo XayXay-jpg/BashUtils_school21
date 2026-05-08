@@ -1,7 +1,14 @@
-123456
-sdfgh
-sdfgh
+hello world
+HELLO WORLD
+Pattern here
+some error occurred
+Warning: low disk space
+12345
+-start
+this is a pattern match
+no match here
+ERROR: critical failure
 
-sdfgh
-
-345678
+PATTERN FOUND
+just a normal line
+multiple patterns in one line: Pattern and error
