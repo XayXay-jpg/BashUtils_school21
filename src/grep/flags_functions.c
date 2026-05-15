@@ -10,11 +10,9 @@
 void flag_e(char *regular, FILE *f, char *filename) {
   (void)filename;
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, 0))
-    error = 1;
+  if (!error && regcomp(&regex, regular, 0)) error = 1;
 
   char *line = NULL;
   if (!error) {
@@ -32,11 +30,9 @@ void flag_e(char *regular, FILE *f, char *filename) {
 void flag_i(char *regular, FILE *f, char *filename) {
   (void)filename;
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, REG_ICASE))
-    error = 1;
+  if (!error && regcomp(&regex, regular, REG_ICASE)) error = 1;
 
   char *line = NULL;
   if (!error) {
@@ -54,11 +50,9 @@ void flag_i(char *regular, FILE *f, char *filename) {
 void flag_v(char *regular, FILE *f, char *filename) {
   (void)filename;
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, 0))
-    error = 1;
+  if (!error && regcomp(&regex, regular, 0)) error = 1;
 
   char *line = NULL;
   if (!error) {
@@ -76,11 +70,9 @@ void flag_v(char *regular, FILE *f, char *filename) {
 void flag_c(char *regular, FILE *f, char *filename) {
   (void)filename;
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, 0))
-    error = 1;
+  if (!error && regcomp(&regex, regular, 0)) error = 1;
 
   char *line = NULL;
   if (!error) {
@@ -99,11 +91,9 @@ void flag_c(char *regular, FILE *f, char *filename) {
 
 void flag_l(char *regular, FILE *f, char *filename) {
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, 0))
-    error = 1;
+  if (!error && regcomp(&regex, regular, 0)) error = 1;
 
   char *line = NULL;
   if (!error) {
@@ -122,11 +112,9 @@ void flag_l(char *regular, FILE *f, char *filename) {
 void flag_n(char *regular, FILE *f, char *filename) {
   (void)filename;
   int error = 0;
-  if (regular == NULL || f == NULL)
-    error = 1;
+  if (regular == NULL || f == NULL) error = 1;
   regex_t regex;
-  if (!error && regcomp(&regex, regular, 0))
-    error = 1;
+  if (!error && regcomp(&regex, regular, 0)) error = 1;
 
   char *line = NULL;
   if (!error) {

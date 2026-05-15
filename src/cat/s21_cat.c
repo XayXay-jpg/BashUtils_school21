@@ -136,24 +136,24 @@ int main(int argc, char *argv[]) {
   } else if (argc == 3 && argv[1][0] == '-') {
     // С флагом
     switch (argv[1][1]) {
-    case 'b':
-      print_file_with_nonempty_numbers(argv[2]);
-      break;
-    case 'e':
-      print_file_with_e_markers(argv[2]);
-      break;
-    case 'n':
-      print_file_with_numbers(argv[2]);
-      break;
-    case 's':
-      print_file_squeeze_blank(argv[2]);
-      break;
-    case 't':
-      print_file_with_t_markers(argv[2]);
-      break;
-    default:
-      printf("n/a");
-      break;
+      case 'b':
+        print_file_with_nonempty_numbers(argv[2]);
+        break;
+      case 'e':
+        print_file_with_e_markers(argv[2]);
+        break;
+      case 'n':
+        print_file_with_numbers(argv[2]);
+        break;
+      case 's':
+        print_file_squeeze_blank(argv[2]);
+        break;
+      case 't':
+        print_file_with_t_markers(argv[2]);
+        break;
+      default:
+        printf("n/a");
+        break;
     }
   } else {
     printf("n/a");

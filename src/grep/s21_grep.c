@@ -1,8 +1,8 @@
+#include "s21_grep.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "s21_grep.h"
 
 int main(int argc, char *argv[]) {
   if (argc < 3) {
