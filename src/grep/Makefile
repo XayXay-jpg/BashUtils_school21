@@ -19,3 +19,7 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 
 rebuild: clean all
+
+test: $(TARGET)
+	chmod +x test_grep.sh
+	./test_grep.sh

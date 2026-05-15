@@ -26,7 +26,7 @@ void print_file_with_numbers(const char *filename) {
     char line[1024];
     int line_number = 0;
     while (fgets(line, sizeof(line), file) != NULL) {
-        printf("%d %s", ++line_number, line);
+        printf("%6d\t%s", ++line_number, line);
     }
     fclose(file);
 }
@@ -42,7 +42,7 @@ void print_file_with_nonempty_numbers(const char *filename) {
     int line_number = 0;
     while (fgets(line, sizeof(line), file) != NULL) {
         if (line[0] != '\n') {
-            printf("%d %s", ++line_number, line);
+            printf("%6d\t%s", ++line_number, line);
         } else {
             printf("%s", line);
         }
@@ -113,6 +113,10 @@ void print_file_with_t_markers(const char *filename) {
             if (line[src] == '\t') {
                 new_line[dst++] = '^';
                 new_line[dst++] = 'I';
+                src++;
+            } else if (line[src] == '\r') {
+                new_line[dst++] = '^';
+                new_line[dst++] = 'M';
                 src++;
             } else {
                 new_line[dst++] = line[src++];

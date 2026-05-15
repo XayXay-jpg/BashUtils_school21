@@ -5,15 +5,30 @@
 #include "s21_grep.h"
 
 int main(int argc, char *argv[]) {
-    // Программа всегда вызывается с флагом: ожидаем 3 аргумента
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s -<flag> pattern\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "n/a\n");
         return 1;
     }
 
-    char *line = NULL;
-    size_t size = 0;
-    ssize_t len;
+    char flag = 0;
+    char *pattern = NULL;
+    int files_start = argc;
+
+    for (int i = 1; i < argc; i++) {
+        if (argv[i][0] == '-' && flag == 0) {
+            flag = argv[i][1];
+        } else if (pattern == NULL) {
+            pattern = argv[i];
+        } else {
+            files_start = i;
+            break;
+        }
+    }
+
+    if (pattern == NULL) {
+        fprintf(stderr, "n/a\n");
+        return 1;
+    }
 
     functions flags[] = {
         {'e', flag_e},
@@ -24,33 +39,28 @@ int main(int argc, char *argv[]) {
         {'n', flag_n},
     };
 
-    args arguments = checkFlags(argv);
-
     int num_flags = sizeof(flags) / sizeof(flags[0]);
-    int idx = foundFunc(arguments.flag, flags, num_flags);
+    int idx = foundFunc(flag, flags, num_flags);
     if (idx == -1) {
-        fprintf(stderr, "Unknown flag '%c'\n", arguments.flag);
+        fprintf(stderr, "n/a\n");
         return 1;
     }
 
-    // Читаем все строки из stdin и обрабатываем каждую выбранной функцией
-    while ((len = getline(&line, &size, stdin)) != -1) {
-        flags[idx].function(arguments.string, line);
-    }
-
-    free(line);
-    return 0;
-}
-
-args checkFlags(char *argv[]) {
-    args result = {0, NULL};
-    if (strlen(argv[1]) == 2) {
-        result.flag = argv[1][1];
-        result.string = argv[2];
+    if (files_start == argc) {
+        flags[idx].function(pattern, stdin, "(standard input)");
     } else {
-        result.string = argv[1];
+        for (int i = files_start; i < argc; i++) {
+            FILE *f = fopen(argv[i], "r");
+            if (f == NULL) {
+                fprintf(stderr, "n/a\n");
+                continue;
+            }
+            flags[idx].function(pattern, f, argv[i]);
+            fclose(f);
+        }
     }
-    return result;
+
+    return 0;
 }
 
 int foundFunc(char flag, functions flags[], int size) {
