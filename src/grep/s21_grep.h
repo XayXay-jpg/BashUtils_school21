@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-//structs
+// structs
 
-typedef struct{
-    char flag;
-    void (*function)(char *regular, FILE *file, char *filename);
-}functions;
+typedef struct {
+  char flag;
+  void (*function)(char *regular, FILE *file, char *filename);
+} functions;
 
-//functions
+// functions
 
 int foundFunc(char flag, functions flags[], int size);
 
