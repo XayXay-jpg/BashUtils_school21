@@ -2,21 +2,17 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -std=c11
 
 SRCS = s21_grep.c flags_functions.c
-OBJS = $(SRCS:.c=.o)
 TARGET = s21_grep
 
-.PHONY: all clean rebuild
+.PHONY: all clean rebuild test
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-%.o: %.c s21_grep.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(TARGET): $(SRCS) s21_grep.h
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET)
 
 rebuild: clean all
 
